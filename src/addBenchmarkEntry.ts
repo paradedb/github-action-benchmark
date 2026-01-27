@@ -12,7 +12,7 @@ export function addBenchmarkEntry(
 ): { prevBench: Benchmark | null; normalizedCurrentBench: Benchmark } {
     let prevBench: Benchmark | null = null;
     let normalizedCurrentBench: Benchmark = benchEntry;
-    const gitAnalyzer = GitGraphAnalyzer.getInstance();
+    const gitAnalyzer = new GitGraphAnalyzer();
 
     // Add benchmark result
     if (entries[benchName] === undefined) {
