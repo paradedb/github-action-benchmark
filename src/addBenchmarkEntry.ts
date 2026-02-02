@@ -10,6 +10,7 @@ export function addBenchmarkEntry(
     entries: BenchmarkSuites,
     maxItems: number | null,
     enableAncestryCache: boolean,
+    enableGitGraph: boolean,
 ): { prevBench: Benchmark | null; normalizedCurrentBench: Benchmark } {
     let prevBench: Benchmark | null = null;
     let normalizedCurrentBench: Benchmark = benchEntry;
@@ -23,23 +24,37 @@ export function addBenchmarkEntry(
     } else {
         const suites = entries[benchName];
 
-        // Find previous benchmark using git ancestry
-        core.debug(`Finding previous benchmark for commit: ${benchEntry.commit.id}`);
+        if (enableGitGraph) {
+            // Find previous benchmark using git ancestry
+            core.debug(`Finding previous benchmark for commit: ${benchEntry.commit.id}`);
 
-        prevBench = gitAnalyzer.findPreviousBenchmark(suites, benchEntry.commit.id);
+            prevBench = gitAnalyzer.findPreviousBenchmark(suites, benchEntry.commit.id);
 
-        if (prevBench) {
-            core.debug(`Found previous benchmark: ${prevBench.commit.id}`);
+            if (prevBench) {
+                core.debug(`Found previous benchmark: ${prevBench.commit.id}`);
+            } else {
+                core.debug('No previous benchmark found');
+            }
         } else {
-            core.debug('No previous benchmark found');
+            // Fallback to execution time ordering (original behavior)
+            for (const e of [...suites].reverse()) {
+                if (e.commit.id !== benchEntry.commit.id) {
+                    prevBench = e;
+                    break;
+                }
+            }
         }
 
         normalizedCurrentBench = normalizeBenchmark(prevBench, benchEntry);
 
-        // Insert at the correct position based on git ancestry
-        const insertionIndex = gitAnalyzer.findInsertionIndex(suites, benchEntry.commit.id);
-        core.debug(`Inserting benchmark at index ${insertionIndex} (of ${suites.length} existing entries)`);
-        suites.splice(insertionIndex, 0, normalizedCurrentBench);
+        if (enableGitGraph) {
+            // Insert at the correct position based on git ancestry
+            const insertionIndex = gitAnalyzer.findInsertionIndex(suites, benchEntry.commit.id);
+            core.debug(`Inserting benchmark at index ${insertionIndex} (of ${suites.length} existing entries)`);
+            suites.splice(insertionIndex, 0, normalizedCurrentBench);
+        } else {
+            suites.push(normalizedCurrentBench);
+        }
 
         if (maxItems !== null && suites.length > maxItems) {
             suites.splice(0, suites.length - maxItems);

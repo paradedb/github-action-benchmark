@@ -443,6 +443,14 @@ Ref to use for reporting the commit
 If set to `true`, this action caches git ancestry lookups in-memory for the current run.
 Set to `false` to disable caching.
 
+#### `enable-git-graph` (Optional)
+
+- Type: Boolean
+- Default: `false`
+
+If set to `true`, this action uses git-graph-aware ordering when inserting benchmark entries.
+By default it appends chronologically (execution time order).
+
 #### `auto-push` (Optional)
 
 - Type: Boolean

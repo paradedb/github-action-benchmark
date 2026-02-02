@@ -37,6 +37,10 @@ inputs:
     description: 'Enable in-memory ancestry caching for git-graph operations'
     required: false
     default: true
+  enable-git-graph:
+    description: 'Enable git-graph-based ordering for benchmark insertion'
+    required: false
+    default: false
   auto-push:
     description: 'Push GitHub Pages branch to remote automatically. This option requires github-token input'
     required: false

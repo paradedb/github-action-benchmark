@@ -335,6 +335,7 @@ function addBenchmarkToDataJson(
         data.entries,
         maxItems,
         config.enableAncestryCache,
+        config.enableGitGraph,
     );
 
     return { prevBench, normalizedCurrentBench };
