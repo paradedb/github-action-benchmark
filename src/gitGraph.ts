@@ -6,6 +6,8 @@ let cachedInstance: GitGraphAnalyzer | null = null;
 
 export class GitGraphAnalyzer {
     private readonly gitCliAvailable: boolean;
+    private ancestryCacheEnabled = true;
+    private readonly ancestryCache = new Map<string, string[]>();
 
     constructor() {
         const result = spawnSync('git', ['--version'], { stdio: 'ignore' });
@@ -60,6 +62,11 @@ export class GitGraphAnalyzer {
         try {
             const args = ['log', '--oneline', '--topo-order', '--', ref];
             const cwd = process.env.GITHUB_WORKSPACE ?? process.cwd();
+            const cacheKey = `${cwd}::${ref}`;
+            if (this.ancestryCacheEnabled && this.ancestryCache.has(cacheKey)) {
+                core.debug(`GitGraphAnalyzer.getAncestry cache hit for ref='${ref}'`);
+                return this.ancestryCache.get(cacheKey) ?? [];
+            }
             core.debug(`GitGraphAnalyzer.getAncestry running: git ${args.join(' ')} (cwd='${cwd}')`);
             const result = spawnSync('git', args, {
                 encoding: 'utf8',
@@ -86,10 +93,14 @@ export class GitGraphAnalyzer {
                 core.debug(`GitGraphAnalyzer.getAncestry stdout preview:\n${preview}`);
             }
 
-            return result.stdout
+            const ancestry = result.stdout
                 .split('\n')
                 .filter((line) => line.trim())
                 .map((line) => line.split(' ')[0]); // Extract SHA from "sha message"
+            if (this.ancestryCacheEnabled) {
+                this.ancestryCache.set(cacheKey, ancestry);
+            }
+            return ancestry;
         } catch (error) {
             core.warning(`Failed to get ancestry for ref ${ref}: ${error}`);
             return [];
@@ -195,5 +206,15 @@ export class GitGraphAnalyzer {
      */
     static resetInstance(): void {
         cachedInstance = null;
+    }
+
+    /**
+     * Enable or disable ancestry result caching.
+     */
+    setAncestryCacheEnabled(enabled: boolean): void {
+        this.ancestryCacheEnabled = enabled;
+        if (!enabled) {
+            this.ancestryCache.clear();
+        }
     }
 }

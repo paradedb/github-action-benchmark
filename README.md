@@ -435,6 +435,14 @@ GitHub API access token.
 
 Ref to use for reporting the commit
 
+#### `enable-ancestry-cache` (Optional)
+
+- Type: Boolean
+- Default: `true`
+
+If set to `true`, this action caches git ancestry lookups in-memory for the current run.
+Set to `false` to disable caching.
+
 #### `auto-push` (Optional)
 
 - Type: Boolean

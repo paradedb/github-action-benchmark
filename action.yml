@@ -33,6 +33,10 @@ inputs:
   ref:
     description: 'optional Ref to use when finding commit'
     required: false
+  enable-ancestry-cache:
+    description: 'Enable in-memory ancestry caching for git-graph operations'
+    required: false
+    default: true
   auto-push:
     description: 'Push GitHub Pages branch to remote automatically. This option requires github-token input'
     required: false

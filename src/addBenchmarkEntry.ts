@@ -9,10 +9,12 @@ export function addBenchmarkEntry(
     benchEntry: Benchmark,
     entries: BenchmarkSuites,
     maxItems: number | null,
+    enableAncestryCache: boolean,
 ): { prevBench: Benchmark | null; normalizedCurrentBench: Benchmark } {
     let prevBench: Benchmark | null = null;
     let normalizedCurrentBench: Benchmark = benchEntry;
     const gitAnalyzer = GitGraphAnalyzer.getInstance();
+    gitAnalyzer.setAncestryCacheEnabled(enableAncestryCache);
 
     // Add benchmark result
     if (entries[benchName] === undefined) {

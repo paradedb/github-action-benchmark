@@ -329,7 +329,13 @@ function addBenchmarkToDataJson(
     data.lastUpdate = Date.now();
     data.repoUrl = htmlUrl;
 
-    const { prevBench, normalizedCurrentBench } = addBenchmarkEntry(benchName, bench, data.entries, maxItems);
+    const { prevBench, normalizedCurrentBench } = addBenchmarkEntry(
+        benchName,
+        bench,
+        data.entries,
+        maxItems,
+        config.enableAncestryCache,
+    );
 
     return { prevBench, normalizedCurrentBench };
 }

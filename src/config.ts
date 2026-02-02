@@ -26,6 +26,7 @@ export interface Config {
     externalDataJsonPath: string | undefined;
     maxItemsInChart: number | null;
     ref: string | undefined;
+    enableAncestryCache: boolean;
 }
 
 export const VALID_TOOLS = [
@@ -229,6 +230,7 @@ export async function configFromJobInput(): Promise<Config> {
     const name: string = core.getInput('name');
     const githubToken: string | undefined = core.getInput('github-token') || undefined;
     const ref: string | undefined = core.getInput('ref') || undefined;
+    const enableAncestryCache = getBoolInput('enable-ancestry-cache');
     const autoPush = getBoolInput('auto-push');
     const skipFetchGhPages = getBoolInput('skip-fetch-gh-pages');
     const commentAlways = getBoolInput('comment-always');
@@ -288,5 +290,6 @@ export async function configFromJobInput(): Promise<Config> {
         maxItemsInChart,
         failThreshold,
         ref,
+        enableAncestryCache,
     };
 }

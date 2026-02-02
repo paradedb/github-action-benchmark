@@ -58,7 +58,7 @@ describe('addBenchmarkEntry with Git Graph', () => {
         mockFindPreviousBenchmark.mockReturnValue(existingEntry);
         mockFindInsertionIndex.mockReturnValue(1);
 
-        const result = addBenchmarkEntry(benchName, benchEntry, entries, null);
+        const result = addBenchmarkEntry(benchName, benchEntry, entries, null, true);
 
         expect(mockFindPreviousBenchmark).toHaveBeenCalledWith(expect.arrayContaining([existingEntry]), 'abc123');
         expect(mockDebug).toHaveBeenCalledWith('Finding previous benchmark for commit: abc123');
@@ -77,7 +77,7 @@ describe('addBenchmarkEntry with Git Graph', () => {
         mockFindPreviousBenchmark.mockReturnValue(null);
         mockFindInsertionIndex.mockReturnValue(1);
 
-        const result = addBenchmarkEntry(benchName, benchEntry, entries, null);
+        const result = addBenchmarkEntry(benchName, benchEntry, entries, null, true);
 
         expect(mockDebug).toHaveBeenCalledWith('Finding previous benchmark for commit: abc123');
         expect(mockDebug).toHaveBeenCalledWith('No previous benchmark found');
@@ -91,7 +91,7 @@ describe('addBenchmarkEntry with Git Graph', () => {
 
         mockFindPreviousBenchmark.mockReturnValue(null);
 
-        const result = addBenchmarkEntry(benchName, benchEntry, entries, null);
+        const result = addBenchmarkEntry(benchName, benchEntry, entries, null, true);
 
         expect(entries[benchName]).toEqual([benchEntry]);
         expect(result.prevBench).toBeNull();
@@ -112,7 +112,7 @@ describe('addBenchmarkEntry with Git Graph', () => {
         mockFindPreviousBenchmark.mockReturnValue(existingEntry);
         mockFindInsertionIndex.mockReturnValue(1);
 
-        const result = addBenchmarkEntry(benchName, benchEntry, entries, null);
+        const result = addBenchmarkEntry(benchName, benchEntry, entries, null, true);
 
         expect(entries[benchName]).toHaveLength(2);
         expect(entries[benchName][1]).toEqual(
@@ -135,7 +135,7 @@ describe('addBenchmarkEntry with Git Graph', () => {
         mockFindPreviousBenchmark.mockReturnValue(oldEntries[oldEntries.length - 1]);
         mockFindInsertionIndex.mockReturnValue(3);
 
-        addBenchmarkEntry(benchName, benchEntry, entries, 3);
+        addBenchmarkEntry(benchName, benchEntry, entries, 3, true);
 
         // Should have 3 items total (maxItems)
         expect(entries[benchName]).toHaveLength(3);
@@ -166,7 +166,7 @@ describe('addBenchmarkEntry with Git Graph', () => {
         mockFindPreviousBenchmark.mockReturnValue(oldEntries[0]);
         mockFindInsertionIndex.mockReturnValue(1);
 
-        addBenchmarkEntry(benchName, benchEntry, entries, 5);
+        addBenchmarkEntry(benchName, benchEntry, entries, 5, true);
 
         expect(entries[benchName]).toHaveLength(2);
         // Should not call debug about truncation
