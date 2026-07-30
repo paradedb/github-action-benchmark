@@ -210,11 +210,23 @@ function validateBenchmarkResultMod<T>(diff: Diff<T>, expectedBenchName: string,
 }
 
 function validateDiff(beforeJson: DataJson, afterJson: DataJson, expectedBenchName: string) {
-    const diffs = diff(beforeJson, afterJson);
-    console.log('Validating diffs:', diffs);
+    const allDiffs = diff(beforeJson, afterJson) ?? [];
+    console.log('Validating diffs:', allDiffs);
 
-    if (!diffs || diffs.length !== 2) {
-        throw new Error('Number of diffs are incorrect. Exact 2 diffs are expected');
+    // When this CI runs in a fork, the previous data in the results repository may have been
+    // written by another repository (e.g. upstream), in which case the action rewrites
+    // `repoUrl` to point at the current repository. Accept that diff and validate the rest.
+    const repoUrlDiffs = allDiffs.filter((d) => deepEq(d.path, ['repoUrl']));
+    const diffs = allDiffs.filter((d) => !deepEq(d.path, ['repoUrl']));
+
+    for (const repoUrlDiff of repoUrlDiffs) {
+        if (repoUrlDiff.kind !== 'E') {
+            throw new Error(`Diff for repoUrl is not an edit: ${JSON.stringify(repoUrlDiff)}`);
+        }
+    }
+
+    if (diffs.length !== 2) {
+        throw new Error('Number of diffs are incorrect. Exact 2 diffs are expected (ignoring repoUrl)');
     }
 
     console.log('Validating lastUpdate modification');
