@@ -32,6 +32,9 @@ jobs:
           tool: 'benchmarkdotnet'
           output-file-path: examples/benchmarkdotnet/BenchmarkDotNet.Artifacts/results/Sample.Benchmarks-report-full-compressed.json
           fail-on-alert: true
+          # Baselines in the shared results repo were recorded by other repos/runners,
+          # so use a loose threshold to avoid flaky alerts from cross-machine variance.
+          alert-threshold: '1000%'
           gh-repository: 'github.com/benchmark-action/github-action-benchmark-results'
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - run: npx tsx scripts/ci_validate_modification.ts 'Benchmark.Net Benchmark' './benchmark-data-repository'
@@ -57,6 +60,9 @@ jobs:
           tool: 'benchmarkjs'
           output-file-path: examples/benchmarkjs/output.txt
           fail-on-alert: true
+          # Baselines in the shared results repo were recorded by other repos/runners,
+          # so use a loose threshold to avoid flaky alerts from cross-machine variance.
+          alert-threshold: '1000%'
           gh-repository: 'github.com/benchmark-action/github-action-benchmark-results'
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - run: npx tsx scripts/ci_validate_modification.ts 'Benchmark.js Benchmark' './benchmark-data-repository'
@@ -87,6 +93,9 @@ jobs:
           tool: 'catch2'
           output-file-path: examples/catch2_v2/benchmark_result.txt
           fail-on-alert: true
+          # Baselines in the shared results repo were recorded by other repos/runners,
+          # so use a loose threshold to avoid flaky alerts from cross-machine variance.
+          alert-threshold: '1000%'
           gh-repository: 'github.com/benchmark-action/github-action-benchmark-results'
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - run: npx tsx scripts/ci_validate_modification.ts 'Catch2 Benchmark' './benchmark-data-repository'
@@ -117,6 +126,9 @@ jobs:
           tool: 'catch2'
           output-file-path: examples/catch2/benchmark_result.txt
           fail-on-alert: true
+          # Baselines in the shared results repo were recorded by other repos/runners,
+          # so use a loose threshold to avoid flaky alerts from cross-machine variance.
+          alert-threshold: '1000%'
           gh-repository: 'github.com/benchmark-action/github-action-benchmark-results'
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - run: npx tsx scripts/ci_validate_modification.ts 'Catch2 Benchmark (v3)' './benchmark-data-repository'
@@ -149,6 +161,9 @@ jobs:
           tool: 'googlecpp'
           output-file-path: examples/cpp/benchmark_result.json
           fail-on-alert: true
+          # Baselines in the shared results repo were recorded by other repos/runners,
+          # so use a loose threshold to avoid flaky alerts from cross-machine variance.
+          alert-threshold: '1000%'
           gh-repository: 'github.com/benchmark-action/github-action-benchmark-results'
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - run: npx tsx scripts/ci_validate_modification.ts 'C++ Benchmark' './benchmark-data-repository'
@@ -177,6 +192,9 @@ jobs:
           tool: 'go'
           output-file-path: examples/go/output.txt
           fail-on-alert: true
+          # Baselines in the shared results repo were recorded by other repos/runners,
+          # so use a loose threshold to avoid flaky alerts from cross-machine variance.
+          alert-threshold: '1000%'
           gh-repository: 'github.com/benchmark-action/github-action-benchmark-results'
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - run: npx tsx scripts/ci_validate_modification.ts 'Go Benchmark' './benchmark-data-repository'
@@ -208,6 +226,9 @@ jobs:
           tool: "jmh"
           output-file-path: examples/java/jmh-result.json
           fail-on-alert: true
+          # Baselines in the shared results repo were recorded by other repos/runners,
+          # so use a loose threshold to avoid flaky alerts from cross-machine variance.
+          alert-threshold: '1000%'
           gh-repository: 'github.com/benchmark-action/github-action-benchmark-results'
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - run: npx tsx scripts/ci_validate_modification.ts 'JMH Benchmark' './benchmark-data-repository'
@@ -242,6 +263,9 @@ jobs:
           tool: 'julia'
           output-file-path: examples/julia/output.json
           fail-on-alert: true
+          # Baselines in the shared results repo were recorded by other repos/runners,
+          # so use a loose threshold to avoid flaky alerts from cross-machine variance.
+          alert-threshold: '1000%'
           gh-repository: 'github.com/benchmark-action/github-action-benchmark-results'
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - run: npx tsx scripts/ci_validate_modification.ts 'Julia benchmark' './benchmark-data-repository'
@@ -273,6 +297,9 @@ jobs:
           tool: 'pytest'
           output-file-path: examples/pytest/output.json
           fail-on-alert: true
+          # Baselines in the shared results repo were recorded by other repos/runners,
+          # so use a loose threshold to avoid flaky alerts from cross-machine variance.
+          alert-threshold: '1000%'
           gh-repository: 'github.com/benchmark-action/github-action-benchmark-results'
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - run: npx tsx scripts/ci_validate_modification.ts 'Python Benchmark with pytest-benchmark' './benchmark-data-repository'
@@ -299,6 +326,9 @@ jobs:
           tool: 'cargo'
           output-file-path: examples/rust/output.txt
           fail-on-alert: true
+          # Baselines in the shared results repo were recorded by other repos/runners,
+          # so use a loose threshold to avoid flaky alerts from cross-machine variance.
+          alert-threshold: '1000%'
           gh-repository: 'github.com/benchmark-action/github-action-benchmark-results'
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - run: npx tsx scripts/ci_validate_modification.ts 'Rust Benchmark' './benchmark-data-repository'
@@ -325,6 +355,9 @@ jobs:
           tool: 'cargo'
           output-file-path: examples/criterion-rs/output.txt
           fail-on-alert: true
+          # Baselines in the shared results repo were recorded by other repos/runners,
+          # so use a loose threshold to avoid flaky alerts from cross-machine variance.
+          alert-threshold: '1000%'
           gh-repository: 'github.com/benchmark-action/github-action-benchmark-results'
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - run: npx tsx scripts/ci_validate_modification.ts 'Criterion.rs Benchmark' './benchmark-data-repository'
