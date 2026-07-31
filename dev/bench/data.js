@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785510720731,
+  "lastUpdate": 1785510722303,
   "repoUrl": "https://github.com/paradedb/github-action-benchmark",
   "entries": {
     "Go Benchmark": [
@@ -282,6 +282,46 @@ window.BENCHMARK_DATA = {
             "value": 1965206461.6287463,
             "unit": "ops/s",
             "extra": "iterations: 3\nforks: 1\nthreads: 1"
+          }
+        ]
+      }
+    ],
+    "Catch2 Benchmark (v3)": [
+      {
+        "commit": {
+          "author": {
+            "email": "rjhallsted@gmail.com",
+            "name": "RJ Barman",
+            "username": "barbarj"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "ddc9e59bfb2a35a1208c7c2bfae1962fc1c8f73f",
+          "message": "Merge pull request #2 from paradedb/barbarj.clone-only-branch\n\nshallow-clone the target branch only",
+          "timestamp": "2026-07-31T11:10:54-04:00",
+          "tree_id": "f6e6db3c46b76eca309defac805a2983d066627f",
+          "url": "https://github.com/paradedb/github-action-benchmark/commit/ddc9e59bfb2a35a1208c7c2bfae1962fc1c8f73f"
+        },
+        "date": 1785510719834,
+        "tool": "catch2",
+        "benches": [
+          {
+            "name": "Fibonacci 10",
+            "value": 83.4566,
+            "range": "± 3.31485",
+            "unit": "ns",
+            "extra": "100 samples\n267 iterations"
+          },
+          {
+            "name": "Fibonacci 20",
+            "value": 7.63129,
+            "range": "± 233.349",
+            "unit": "us",
+            "extra": "100 samples\n3 iterations"
           }
         ]
       }
