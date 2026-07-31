@@ -1,0 +1,62 @@
+window.BENCHMARK_DATA = {
+  "lastUpdate": 1785510676961,
+  "repoUrl": "https://github.com/paradedb/github-action-benchmark",
+  "entries": {
+    "Go Benchmark": [
+      {
+        "commit": {
+          "author": {
+            "email": "rjhallsted@gmail.com",
+            "name": "RJ Barman",
+            "username": "barbarj"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "ddc9e59bfb2a35a1208c7c2bfae1962fc1c8f73f",
+          "message": "Merge pull request #2 from paradedb/barbarj.clone-only-branch\n\nshallow-clone the target branch only",
+          "timestamp": "2026-07-31T11:10:54-04:00",
+          "tree_id": "f6e6db3c46b76eca309defac805a2983d066627f",
+          "url": "https://github.com/paradedb/github-action-benchmark/commit/ddc9e59bfb2a35a1208c7c2bfae1962fc1c8f73f"
+        },
+        "date": 1785510676655,
+        "tool": "go",
+        "benches": [
+          {
+            "name": "BenchmarkFib10",
+            "value": 353.8,
+            "unit": "ns/op",
+            "extra": "3429945 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20",
+            "value": 44360,
+            "unit": "ns/op",
+            "extra": "27313 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric",
+            "value": 44267,
+            "unit": "ns/op\t         4.000 auxMetricUnits",
+            "extra": "27205 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - ns/op",
+            "value": 44267,
+            "unit": "ns/op",
+            "extra": "27205 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - auxMetricUnits",
+            "value": 4,
+            "unit": "auxMetricUnits",
+            "extra": "27205 times\n4 procs"
+          }
+        ]
+      }
+    ]
+  }
+}
