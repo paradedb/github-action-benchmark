@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785526472015,
+  "lastUpdate": 1785526475625,
   "repoUrl": "https://github.com/paradedb/github-action-benchmark",
   "entries": {
     "Go Benchmark": [
@@ -222,6 +222,44 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.00011011619742641755",
             "extra": "mean: 1.6370076605349628 msec\nrounds: 598"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rjhallsted@gmail.com",
+            "name": "rjhallsted",
+            "username": "barbarj"
+          },
+          "committer": {
+            "email": "rjhallsted@gmail.com",
+            "name": "rjhallsted",
+            "username": "barbarj"
+          },
+          "distinct": true,
+          "id": "a216e36849d760173bdc82e454b22d308d70db41",
+          "message": "Remove failing, unecessary line from release script",
+          "timestamp": "2026-07-31T13:33:46-06:00",
+          "tree_id": "4e5bb8330e92097222df5303ea05f174b6e74a2f",
+          "url": "https://github.com/paradedb/github-action-benchmark/commit/a216e36849d760173bdc82e454b22d308d70db41"
+        },
+        "date": 1785526466865,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "bench.py::test_fib_10",
+            "value": 105679.08797908502,
+            "unit": "iter/sec",
+            "range": "stddev: 9.570065946796615e-7",
+            "extra": "mean: 9.462610050135089 usec\nrounds: 36497"
+          },
+          {
+            "name": "bench.py::test_fib_20",
+            "value": 875.7876560990269,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00005800032637369506",
+            "extra": "mean: 1.1418292927925537 msec\nrounds: 888"
           }
         ]
       }
