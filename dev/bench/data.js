@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785526495192,
+  "lastUpdate": 1785526498490,
   "repoUrl": "https://github.com/paradedb/github-action-benchmark",
   "entries": {
     "Go Benchmark": [
@@ -520,6 +520,36 @@ window.BENCHMARK_DATA = {
           {
             "name": "org.openjdk.jmh.samples.JMHSample_01_HelloWorld.wellHelloThere",
             "value": 1965206461.6287463,
+            "unit": "ops/s",
+            "extra": "iterations: 3\nforks: 1\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rjhallsted@gmail.com",
+            "name": "rjhallsted",
+            "username": "barbarj"
+          },
+          "committer": {
+            "email": "rjhallsted@gmail.com",
+            "name": "rjhallsted",
+            "username": "barbarj"
+          },
+          "distinct": true,
+          "id": "a216e36849d760173bdc82e454b22d308d70db41",
+          "message": "Remove failing, unecessary line from release script",
+          "timestamp": "2026-07-31T13:33:46-06:00",
+          "tree_id": "4e5bb8330e92097222df5303ea05f174b6e74a2f",
+          "url": "https://github.com/paradedb/github-action-benchmark/commit/a216e36849d760173bdc82e454b22d308d70db41"
+        },
+        "date": 1785526497785,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "org.openjdk.jmh.samples.JMHSample_01_HelloWorld.wellHelloThere",
+            "value": 1939572230.6206903,
             "unit": "ops/s",
             "extra": "iterations: 3\nforks: 1\nthreads: 1"
           }
