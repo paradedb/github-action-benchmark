@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785510686432,
+  "lastUpdate": 1785510688270,
   "repoUrl": "https://github.com/paradedb/github-action-benchmark",
   "entries": {
     "Go Benchmark": [
@@ -132,6 +132,46 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.00011011619742641755",
             "extra": "mean: 1.6370076605349628 msec\nrounds: 598"
+          }
+        ]
+      }
+    ],
+    "Benchmark.js Benchmark": [
+      {
+        "commit": {
+          "author": {
+            "email": "rjhallsted@gmail.com",
+            "name": "RJ Barman",
+            "username": "barbarj"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "ddc9e59bfb2a35a1208c7c2bfae1962fc1c8f73f",
+          "message": "Merge pull request #2 from paradedb/barbarj.clone-only-branch\n\nshallow-clone the target branch only",
+          "timestamp": "2026-07-31T11:10:54-04:00",
+          "tree_id": "f6e6db3c46b76eca309defac805a2983d066627f",
+          "url": "https://github.com/paradedb/github-action-benchmark/commit/ddc9e59bfb2a35a1208c7c2bfae1962fc1c8f73f"
+        },
+        "date": 1785510683542,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "fib(10)",
+            "value": 1425733,
+            "range": "±0.45%",
+            "unit": "ops/sec",
+            "extra": "96 samples"
+          },
+          {
+            "name": "fib(20)",
+            "value": 11655,
+            "range": "±0.61%",
+            "unit": "ops/sec",
+            "extra": "99 samples"
           }
         ]
       }
