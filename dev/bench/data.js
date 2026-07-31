@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785510778918,
+  "lastUpdate": 1785526449067,
   "repoUrl": "https://github.com/paradedb/github-action-benchmark",
   "entries": {
     "Go Benchmark": [
@@ -91,6 +91,42 @@ window.BENCHMARK_DATA = {
             "name": "bench_fib_20",
             "value": 18912.23,
             "range": "± 185.49",
+            "unit": "ns/iter"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "rjhallsted@gmail.com",
+            "name": "rjhallsted",
+            "username": "barbarj"
+          },
+          "committer": {
+            "email": "rjhallsted@gmail.com",
+            "name": "rjhallsted",
+            "username": "barbarj"
+          },
+          "distinct": true,
+          "id": "a216e36849d760173bdc82e454b22d308d70db41",
+          "message": "Remove failing, unecessary line from release script",
+          "timestamp": "2026-07-31T13:33:46-06:00",
+          "tree_id": "4e5bb8330e92097222df5303ea05f174b6e74a2f",
+          "url": "https://github.com/paradedb/github-action-benchmark/commit/a216e36849d760173bdc82e454b22d308d70db41"
+        },
+        "date": 1785526448166,
+        "tool": "cargo",
+        "benches": [
+          {
+            "name": "bench_fib_10",
+            "value": 149.59,
+            "range": "± 1.69",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "bench_fib_20",
+            "value": 18898.73,
+            "range": "± 208.76",
             "unit": "ns/iter"
           }
         ]
